@@ -39,6 +39,82 @@ var dental = [
 //Agregar código para el desafio 2 aquí
 
 
+// 1) AGREGAR HORAS A TRAUMATOLOGIA   concat
+
+const traumatologiaNuevas = [
+    {hora: '09:00',  especialista: 'RENÉ POBLETE', paciente: 'ANA GELLONA',     rut: '13123329-7', prevision: 'ISAPRE'},
+    {hora: '09:30', especialista: 'MARIA SOLAR',          paciente: 'RAMIRO ANDRADE',    rut: '12221451-K', prevision: 'FONASA'},
+    {hora: '10:00', especialista: 'RAUL LOYOLA',     paciente: 'CARMEN ISLA',         rut: '10112348-3', prevision: 'ISAPRE'},
+    {hora: '10:30', especialista: 'ANTONIO LARENAS',   paciente: 'PABLO LOAYZA',   rut: '13453234-1', prevision: 'ISAPRE'},
+    {hora: '12:00', especialista: 'MATIAS ARAVENA',      paciente: 'SUSANA POBLETE',       rut: '14345656-6', prevision: 'FONASA'}
+];
+
+const horasTraumatologia = traumatologia.concat(traumatologiaNuevas);
+console.log(horasTraumatologia);
+
+
+// 2) Eliminar el primer y último elemento del arreglo de Radiología.  shift y pop
+const radiologiaEliminapri = radiologia.shift();
+const radiologiaEliminault = radiologia.pop();
+console.log(radiologia);
+
+
+// // 3) Imprimir en la página HTML, mediante document.write y/o la funciones que estime
+// conveniente, la lista de consultas médicas de Dental. Sin embargo, debe hacerlo
+// separando por un guión cada dato desplegado y cada fila de información debe estar
+// separada por un párrafo.
+// Ejemplo:
+// 8:30 - ANDREA ZUÑIGA - MARCELA RETAMAL - 11123425-6 - ISAPRE
+// 11:00 - MARIA PIA ZAÑARTU - ANGEL MUÑOZ - 9878789-2 - ISAPRE...
+//   forEach 
+
+dental.forEach(function(denta) {
+    document.write(`${denta.hora} - ${denta.paciente} - ${denta.rut} - ${denta.prevision} <br><br>`);
+});
+
+
+
+
+
+// 4) Imprimir un listado total de todos los pacientes que se atendieron en el centro
+// médico. Para esto, deberá unir todos los nombres de pacientes e imprimir uno por
+// cada párrafo.     concat y reduce
+
+const totalPaciente = horasTraumatologia.concat(radiologia);
+console.log(totalPaciente);
+const totalPacientes = totalPaciente.concat(dental);
+console.log(totalPacientes);
+
+
+let nombres = totalPacientes.reduce(function(acumulador,nombre){
+return acumulador + nombre.paciente + "<br><br>";
+}, '');
+console.log(nombres);
+document.write(`${nombres}`);
+
+
+
+
+// 5). Filtrar aquellos pacientes que indican ser de ISAPRE en la lista de consultas médicas
+// de Dental.   Filter
+
+var dentalIsapre = dental.filter(function(denta){
+return denta.prevision =="ISAPRE";
+});
+console.log(dentalIsapre);
+
+
+// 6. Filtrar aquellos pacientes que indican ser de FONASA en la lista de consultas
+// médicas de Traumatología.  Filter
+
+
+var traumatologiaFonasa = horasTraumatologia.filter(function(trauma){
+return trauma.prevision =="FONASA";
+});
+console.log(traumatologiaFonasa);
+
+
+
 
 
 //Agregar código para el desafio 2 aquí
